@@ -69,16 +69,18 @@ Here is an exploratory visualization of the dataset. It is a bar chart that show
 
 #### Q1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? 
 
+##### Augmentation
+
 Based on the exploratory analysis of the dataset, I decided to first augment my data by generating additional data. Failure to do so impacts the accuracy of the model because the more represented classes stand a higher chance of being predicted.
 
 However, rather than blindly augmenting images for all the classes, I decided to only do it for the minority classes i.e. classes that were below 1.6% of the whole dataset.
 
-The image augmentation/class balancing techniques include:
+The image augmentation/class balancing techniques (based on [OpenCV](https://opencv.org/)) include:
 
-* Rotation
-* Horizontal flip
-* Zooming in/out
-* Affine transformation
+* Rotation: `cv2.getRotationMatrix2D()` & `cv2.warpAffine()`
+* Horizontal flip: `cv2.getRotationMatrix2D()` & `cv2.warpAffine()`
+* Zooming in/out: `cv2.warpPerspective()`
+* Affine transformation: `cv2.findHomography()` & `cv2.warpPerspective()`
 
 One important point is that not all classes could be rotated or horizontally flipped as it either totally renders the road sign useless or makes it part of the opposite class. On the other hand, this behavior was capitalised upon by generating images for the opposite classes e.g. *keep left <--> keep right*. The below image shows some examples of the application of the aforementioned techniques:
 
@@ -92,23 +94,11 @@ Below is the result after image augmentation/dataset balancing:
 ![Dataset augmentation 2](writeup-images/data-augmentation2.png)
 
 
-As a first step, I decided to convert the images to grayscale because ...
+##### Pre-processing
 
-Here is an example of a traffic sign image before and after grayscaling.
+Following image pre-processing techniques were applied (these techniques are a combination of generally known image enhancement techniques and techniques mentioned in [Pierre Sermanet and Yann LeCun](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf) paper):
 
-![alt text][image2]
-
-As a last step, I normalized the image data because ...
-
-I decided to generate additional data because ... 
-
-To add more data to the the data set, I used the following techniques because ... 
-
-Here is an example of an original image and an augmented image:
-
-![alt text][image3]
-
-The difference between the original data set and the augmented data set is the following ... 
+* Grayscaling: Images were grayscaled as they seem to increase the accuracy of the model by being indifferent to color. Also, it dramatically reduces image size as there's only 1 color channel, which helps with speeding up the training cycle. `cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)` function was used for grayscaling.
 
 
 #### Q2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
@@ -195,6 +185,3 @@ For the first image, the model is relatively sure that this is a stop sign (prob
 
 
 For the second image ... 
-
-### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
-####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
