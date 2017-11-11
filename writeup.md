@@ -1,4 +1,4 @@
-#Traffic Sign Classifier
+# Traffic Sign Classifier
 
 ## Overview   
    
@@ -26,9 +26,9 @@ The image classifier has been implemented as a Jupyter notebook & can be viewed 
 
 ## Rubric Points
 
-###Data Set Summary & Exploration
+### Data Set Summary & Exploration
 
-####1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
+#### 1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
 
 I used a combination of Pandas library and Python to calculate summary statistics of the traffic
 signs data set as shown below:
@@ -45,21 +45,21 @@ print("Number of validation images =", n_validation)
 print("Image data shape (Height x Width x Color Channels) =", image_shape)
 print("Number of classes =", n_classes)
 ```
-![Train validate summary image][writeup-images/data-exploration.png]
+![Train validate summary image](writeup-images/data-exploration.png)
 
 ```python
 ...
 n_test = X_test_working_copy.shape[0]
 print("Number of test images =", n_test)
 ```
-![Test summary image][writeup-images/data-exploration-test.png]
+![Test summary image](writeup-images/data-exploration-test.png)
 
 To get a better idea of the training dataset, the following visualization was generated that shows the image classes along with a sample image from each class:
 
-![Test summary image][writeup-images/data-exploration2.png]
+![Test summary image](writeup-images/data-exploration2.png)
 
-####2. Include an exploratory visualization of the dataset.
+#### 2. Include an exploratory visualization of the dataset.
 
 Here is an exploratory visualization of the dataset. It is a bar chart that shows the distribution of the classes in the training dataset. It is quite clear from the class distribution that we don't have a balanced training dataset.
 
-![Test summary image][writeup-images/data-exploration3.png]
+![Test summary image](writeup-images/data-exploration3.png)
