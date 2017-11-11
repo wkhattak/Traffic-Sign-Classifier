@@ -137,9 +137,9 @@ My final model architecture consisted of 6 layers as descried in the following t
 || Dropout| Keep Probability 0.5|
 |6| Fully Connected| Input 84, Output 43, Initializer Xavier|
 
-#### Q3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
+#### Q3. Describe how you trained your model?
 
-To train the model, I used an ....
+The model was trained by feeding in the pre-processed `65,518` grayscale images with a batch size of `128` and `150` epochs. Initially a fixed learning rate of `0.001` was used but later on, an exponentially decaying learning rate with a factor of `0.90` and initial rate of `0.001`was used. Also, all the weights were initialized using [Xavier](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.207.2059&rep=rep1&type=pdf) initializer that aims to keep the scale of the gradients roughly the same in all layers. For optimization, [Adam](https://en.wikipedia.org/wiki/Stochastic_gradient_descent#Adam) optimizer was used as it is known to perform better than the classical [Stochastic Gradient Descent](https://en.wikipedia.org/wiki/Stochastic_gradient_descent) optimizer.
 
 #### Q4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
