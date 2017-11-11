@@ -116,7 +116,7 @@ The following image displays the application of the aforementioned techniques on
 
 #### Q2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.)? 
 
-Teh architecture of the CNN is based on the famous [LeNet-5](http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf) architecure for [MNIST](http://yann.lecun.com/exdb/mnist/) digit recognition. 
+The architecture of the CNN is based on the famous [LeNet-5](http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf) architecure for [MNIST](http://yann.lecun.com/exdb/mnist/) digit recognition. However, to increase the depth of the network, one more convolution layer was added. Further, to reduce overfitting and make the network more robust, [L2 Regularization](https://en.wikipedia.org/wiki/Regularization_(mathematics)) & [Dropout](https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf) were added. 
 
 My final model architecture consisted of 6 layers as descried in the following table:
 
