@@ -21197,11 +21197,6 @@ X_train_grayscale = convert_to_grayscale(X_train_working_copy)
 print(&#39;Coverting {} images to grayscale...&#39;.format(&#39;validation&#39;))
 X_valid_grayscale = convert_to_grayscale(X_valid_working_copy)
 
-#plt.figure(figsize=(1,1))
-#plt.imshow(X_train_working_copy[46164].squeeze(),cmap=&#39;gray&#39;)
-#plt.title(str(y_train_working_copy[46164]))
-#plt.show()
-
 # Apply histogram normalization to balance the contrast i.e. make images look sharper
 print(&quot;Adjusting {} images&#39; contrast...&quot;.format(&#39;training&#39;))
 X_train_grayscale = adjust_contrast(X_train_grayscale)
