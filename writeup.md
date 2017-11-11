@@ -77,10 +77,10 @@ However, rather than blindly augmenting images for all the classes, I decided to
 
 The image augmentation/class balancing techniques (based on [OpenCV](https://opencv.org/)) include:
 
-* Rotation: `cv2.getRotationMatrix2D()` & `cv2.warpAffine()`
-* Horizontal flip: `cv2.getRotationMatrix2D()` & `cv2.warpAffine()`
-* Zooming in/out: `cv2.warpPerspective()`
-* Affine transformation: `cv2.findHomography()` & `cv2.warpPerspective()`
+* **Rotation**: `cv2.getRotationMatrix2D()` & `cv2.warpAffine()`
+* **Horizontal flip**: `cv2.getRotationMatrix2D()` & `cv2.warpAffine()`
+* **Zooming in/out**: `cv2.warpPerspective()`
+* **Affine transformation**: `cv2.findHomography()` & `cv2.warpPerspective()`
 
 One important point is that not all classes could be rotated or horizontally flipped as it either totally renders the road sign useless or makes it part of the opposite class. On the other hand, this behavior was capitalised upon by generating images for the opposite classes e.g. *keep left <--> keep right*. The below image shows some examples of the application of the aforementioned techniques:
 
@@ -90,6 +90,7 @@ Below is the result after image augmentation/dataset balancing:
 
 ![Dataset augmentation 1](writeup-images/data-augmentation3.png)
 
+
 ![Dataset augmentation 2](writeup-images/data-augmentation2.png)
 
 
@@ -97,8 +98,21 @@ Below is the result after image augmentation/dataset balancing:
 
 Following image pre-processing techniques were applied (these techniques are a combination of generally known image enhancement techniques and techniques mentioned in [Pierre Sermanet and Yann LeCun](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf) paper):
 
-* Grayscaling: Images were grayscaled as they seem to increase the accuracy of the model by being indifferent to color. Also, it dramatically reduces image size as there's only 1 color channel, which helps with speeding up the training cycle. `cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)` function was used for grayscaling.
+1. **Grayscaling**: Images were grayscaled as they seem to increase the accuracy of the model by being indifferent to color. Also, it dramatically reduces image size as there's only 1 color channel, which helps with speeding up the training cycle. `cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)` function was used for grayscaling.
 
+2. **Histogram Normalization**: Images were made sharper by adjusting their contrast via Histogram Normalization technique. Instead of applying a single contrast value across the image, different values are applied to each different tiles of the image through Contrast Limited Adaptive Histogram Equalization (CLAHE) technique. This results in much sharper contrast. `cv2.createCLAHE()` function was used to achieve CLAHE.
+
+3. **Adaptive Threshold**: To reduce noise, Adaptive Thresholding was applied that further helps in filtering out unnecessary pixels. `cv2.adaptiveThreshold()` function was employed.
+
+4. **Normalization**: Normalization helps the optimizer to reduce the loss as quickly as possilbe as it doesn't need to do too much searching. Hence, the images were normalized. However, using the prescribed `(pixel - 128)/ 128`technique didn't really achieve `0` mean & `unit` variance. Instead,  `sklearn.preprocessing` package's `scale()` method was used that resulted in achieving `0` mean & `1` variance.
+
+As an example, consider the following image that displays the application of the above techniques:
+
+![Preprocessing example](writeup-images/data-preprocessing.png)
+
+The following image displays the application of the aforementioned techniques on *test* and *validation* datasets:
+
+![Preprocessing pipeline](writeup-images/data-preprocessing2.png)
 
 #### Q2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
