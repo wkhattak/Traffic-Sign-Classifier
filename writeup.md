@@ -114,21 +114,15 @@ The following image displays the application of the aforementioned techniques on
 
 ![Preprocessing pipeline](writeup-images/data-preprocessing2.png)
 
-#### Q2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
+#### Q2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.)? 
 
-My final model consisted of the following layers:
+My final model consisted of 6 layers as descried in the following table:
 
-| Layer         		|     Description	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
-| RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
-|						|												|
-|						|												|
+| Layer No.|Component| Description	        					| 
+|:---:|:-------:|:-------------------------------:| 
+| 1| Convolution 5x5   | Input 32x32x1 Grayscale image, 1x1 Stride, SAME padding, Output 32x32x16 	|
+|  | RELU| Activation																	|
+|  |Max pooling 2x2| Input 32x32x16, 2x2 stride, Output 16x16x16 				
  
 
 
