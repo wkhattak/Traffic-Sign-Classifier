@@ -119,21 +119,21 @@ The following image displays the application of the aforementioned techniques on
 My final model consisted of 6 layers as descried in the following table:
 
 | Layer No.|Component| Description	        					| 
-|:---:|:-------:|:-------------------------------:| 
-| 1| Convolution 5x5   | Input 32x32x1, Grayscale image, 1x1 Stride, SAME padding, Output 32x32x16, Initializer Xavier|
-|  | RELU| Activation|
-|  |Max Pooling 2x2| Input 32x32x16, 2x2 Stride, Output 16x16x16| 				
-| 2| Convolution 5x5   | Input 16x16x16, 1x1 Stride, SAME Padding, Output 16x16x32, Initializer Xavier|
-|  | RELU| Activation|
-|  |Max Pooling 2x2| Input 16x16x32, 2x2 Stride, Output 8x8x32|
-| 3| Convolution 5x5   | Input 8x8x32, 1x1 Stride, SAME Padding, Output 8x8x64, Initializer Xavier|
-|  | RELU| Activation|
-|  |Max Pooling 2x2| Input 8x8x64, 2x2 Stride, Output 4x4x64|
-|4 | Fully Connected| Input 1024, Output 120, Initializer Xavier|
-|  | Dropout| Keep Probability 0.5|
-|5 | Fully Connected| Input 120, Output 84, Initializer Xavier|
-|  | Dropout| Keep Probability 0.5|
-|6 | Fully Connected| Input 84, Output 43, Initializer Xavier|
+|:--:|:--------:|:----------------------------------:| 
+|1| Convolution 5x5   | Input 32x32x1, Grayscale image, 1x1 Stride, SAME padding, Output 32x32x16, Initializer Xavier|
+|| RELU| Activation|
+||Max Pooling 2x2| Input 32x32x16, 2x2 Stride, Output 16x16x16| 				
+|2| Convolution 5x5   | Input 16x16x16, 1x1 Stride, SAME Padding, Output 16x16x32, Initializer Xavier|
+|| RELU| Activation|
+||Max Pooling 2x2| Input 16x16x32, 2x2 Stride, Output 8x8x32|
+|3| Convolution 5x5   | Input 8x8x32, 1x1 Stride, SAME Padding, Output 8x8x64, Initializer Xavier|
+|| RELU| Activation|
+||Max Pooling 2x2| Input 8x8x64, 2x2 Stride, Output 4x4x64|
+|4| Fully Connected| Input 1024, Output 120, Initializer Xavier|
+|| Dropout| Keep Probability 0.5|
+|5| Fully Connected| Input 120, Output 84, Initializer Xavier|
+|| Dropout| Keep Probability 0.5|
+|6| Fully Connected| Input 84, Output 43, Initializer Xavier|
 
 #### Q3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
