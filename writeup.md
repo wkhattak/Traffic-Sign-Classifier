@@ -123,8 +123,14 @@ My final model consisted of 6 layers as descried in the following table:
 | 1| Convolution 5x5   | Input 32x32x1 Grayscale image, 1x1 Stride, SAME padding, Output 32x32x16 	|
 |  | RELU| Activation																	|
 |  |Max pooling 2x2| Input 32x32x16, 2x2 stride, Output 16x16x16 				
- 
-
+|
+| 2| Convolution 5x5   | Input 16x16x16, 1x1 Stride, SAME padding, Output 16x16x32 |
+|  | RELU| Activation																	|
+|  |Max pooling 2x2| Input 16x16x32, 2x2 stride, Output 8x8x32
+|
+| 3| Convolution 5x5   | Input 8x8x32, 1x1 Stride, SAME padding, Output 8x8x64|
+|  | RELU| Activation																	|
+|  |Max pooling 2x2| Input 8x8x64, 2x2 stride, Output 4x4x64
 
 ####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
