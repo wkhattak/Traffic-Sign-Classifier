@@ -90,7 +90,6 @@ Below is the result after image augmentation/dataset balancing:
 
 ![Dataset augmentation 1](writeup-images/data-augmentation3.png)
 
-
 ![Dataset augmentation 2](writeup-images/data-augmentation2.png)
 
 
