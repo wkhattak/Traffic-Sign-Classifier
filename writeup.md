@@ -63,3 +63,22 @@ To get a better idea of the training dataset, the following visualization was ge
 Here is an exploratory visualization of the dataset. It is a bar chart that shows the distribution of the classes in the training dataset. It is quite clear from the class distribution that we don't have a balanced training dataset.
 
 ![Test summary image](writeup-images/data-exploration3.png)
+
+
+### Design and Test a Model Architecture
+
+#### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? 
+
+Based on the exploratory analysis of the dataset, I decided to first augment my data by generating additional data. Failure to do so impacts the accuracy of the model because the more represented classes stand a higher chance of being predicted.
+
+However, rather than blindly augmenting images for all the classes, I decided to only do it for the minority classes i.e. classes that were below 1.6% of the whole dataset.
+
+The image augmentation/class balancing techniques include:
+
+*Rotation
+*Horizontal flip
+*Zooming in/out
+*Affine transformation
+
+The below image shows some examples of the application of the aforementioned techniques:
+![Augmentation examples](writeup-images/data-augmentation.png)
