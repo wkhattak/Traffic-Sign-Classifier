@@ -116,11 +116,13 @@ The following image displays the application of the aforementioned techniques on
 
 #### Q2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.)? 
 
-My final model consisted of 6 layers as descried in the following table:
+Teh architecture of the CNN is based on the famous [LeNet-5](http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf) architecure for [MNIST](http://yann.lecun.com/exdb/mnist/) digit recognition. 
+
+My final model architecture consisted of 6 layers as descried in the following table:
 
 | Layer No.|Component| Description	        					| 
 |:--:|:--------:|:----------------------------------:| 
-|1| Convolution 5x5   | Input 32x32x1, Grayscale image, 1x1 Stride, SAME padding, Output 32x32x16, Initializer Xavier|
+|1| Convolution 5x5   | Input 32x32x1, 1x1 Stride, SAME padding, Output 32x32x16, Initializer Xavier|
 || RELU| Activation|
 ||Max Pooling 2x2| Input 32x32x16, 2x2 Stride, Output 16x16x16| 				
 |2| Convolution 5x5   | Input 16x16x16, 1x1 Stride, SAME Padding, Output 16x16x32, Initializer Xavier|
