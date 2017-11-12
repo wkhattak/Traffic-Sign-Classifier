@@ -210,20 +210,15 @@ Here are ten German traffic signs that I found on the web:
 
 All images are of good quality. However, *Wild animals crossing* and *No passing* might be difficult to classify because of their angle. Also, the last image has part of another road sign visible as well.
 
-#### Q2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+#### Q2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set?
 
 Here are the results of the prediction:
 
-| Image			        |     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+![Model predictions](writeup-images/predict-150-128-2500.png)  							
 
+![Model accuracy](writeup-images/predict2-150-128-2500.png)
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 6 of the 10 traffic signs, which gives an accuracy of `60%`. This result is not at par with the test results. This could be attributed to the quality of training, validation and test images. These images seem to be of lower quality, hence there's a difference between new images and what the model was trained on. Other reason could be that although the model has a *validation* accuracy of `0.962`, there's room for improvement as some individuals have even reported `99%` accuracy. In future, *inception modules*, *direct feed-in*, *furhter decrease in learning rate* and even *colored images* can be used (as teh background color/edge color might help to furhter increase the certainty of the model).
 
 #### Q3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
