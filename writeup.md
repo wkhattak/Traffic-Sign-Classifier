@@ -216,9 +216,9 @@ Here are the results of the prediction:
 
 | Actual                 |Predicted                 |
 |:----------------------:|:------------------------:|
-|[Model predictions](writeup-images/predict-Actual-150-128-2500.png)|[Model predictions](writeup-images/predict-Predict-150-128-2500.png)| 							
+[Model predictions](writeup-images/predict-Actual-150-128-2500.png)[Model predictions](writeup-images/predict-Predict-150-128-2500.png) 							
 
-![Model accuracy](writeup-images/predict2-150-128-2500.png)
+[Model accuracy](writeup-images/predict2-150-128-2500.png)
 
 The model was able to correctly guess 6 of the 10 traffic signs, which gives an accuracy of `60%`. Surprisingly enough, both the speed limit signs were predicted incorrectly & swapped (straightforward shapes), while on the other hand, *Wild animals crossing* sign was predicted correctly (complex shape).
 
