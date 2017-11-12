@@ -229,3 +229,43 @@ This result is not at par with the test results. This could be attributed to the
 The code for making predictions on my final model is located in the third-last cell of the Jupyter notebook labelled *Predict the Sign Type for Each Image*. While the second-last cell labelled *Analyze Performance* and the last cell labelled *Output Top 5 Softmax Probabilities For Each Image Found on the Web* calculate the *accuracy* of the model and *softmax probabilities* on these new images respectively.
 
 ![Softtmax Probabilities](writeup-images/predict3-150-128-2500.png)
+
+## References
+
+* https://github.com/upul/Traffic-Signs/blob/master/Traffic_Signs_Recognition.ipynb
+
+* https://github.com/NikolasEnt/Traffic-Sign-Classifier/blob/master/Traffic_Sign_Classifier.ipynb
+
+* http://jeremyshannon.com/2017/01/13/udacity-sdcnd-traffic-sign-classifier.html
+
+* https://github.com/navoshta/traffic-signs/blob/master/Traffic_Signs_Recognition.ipynb
+
+* https://navoshta.com/traffic-signs-classification/
+
+* https://www.python-course.eu/matplotlib_multiple_figures.php
+
+* https://stackoverflow.com/questions/43265731/how-to-add-black-border-to-matplotlib-2-0-ax-object-in-python-3
+
+* https://matplotlib.org/api/matplotlib_configuration_api.html
+
+* https://stackoverflow.com/questions/29498652/plot-bar-graph-from-pandas-dataframe
+
+* https://stackoverflow.com/questions/10373660/converting-a-pandas-groupby-object-to-dataframe
+
+* https://stackoverflow.com/questions/38683709/python-pandas-how-to-set-dataframe-column-value-as-x-axis-labels
+
+* http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/
+
+* https://docs.opencv.org/3.1.0/d5/daf/tutorial_py_histogram_equalization.html
+
+* https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_imgproc/py_geometric_transformations/py_geometric_transformations.html#geometric-transformations
+
+* http://scikit-learn.org/stable/modules/preprocessing.html
+
+* https://www.learnopencv.com/warp-one-triangle-to-another-using-opencv-c-python/
+
+* https://www.pyimagesearch.com/2014/01/20/basic-image-manipulations-in-python-and-opencv-resizing-scaling-rotating-and-cropping/
+
+* https://www.learnopencv.com/homography-examples-using-opencv-python-c/
+
+* http://www.ritchieng.com/machine-learning/deep-learning/tensorflow/regularization/
