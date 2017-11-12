@@ -2,7 +2,7 @@
 
 ## Overview   
    
-This writeup reflects upon the **Finding Lane Line** project by explaining how the image processing pipeline works, identifying any shortcomings and proposing potential improvements. 
+This writeup reflects upon the **Traffic Sign Classifier** project by explaining how the image processing pipeline works, identifying any shortcomings and proposing potential improvements. 
 
 
 ## Project Goals
