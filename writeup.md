@@ -145,10 +145,62 @@ The model was trained by feeding in the pre-processed `65,518` grayscale images 
 
 To solve the problem at hand, I started off with the LeNet architecture as is because it is renowned for solving a similar problem i.e. recognizing images of hand written numbers from `0-9`. Based on *convolution*, such an architecture helps to decrease the breadth of the network and enables to increase the depth without compromising the accuracy. Different *learning rates*, *batch sizes* and *number of epochs* were tried. However, just by using the LeNet as is, the validation accuracy was not reaching the required minimum of `0.93`.
 
-Consequently, I started incorporating other suggested techniques, namely *dropout*, *L2 Regularization*,*decaying learning rate*, *Xavier initialising of weights* and *direct feed-in* from convolution layers to the fully connected layers (as described in the  Pierre Sermanet and Yann LeCun paper). Upon experimentation, the introduction of *direct feed-in* made the model behave very unreliably and the validation accuracy was stuck at a very low number despite training the model for a number of epochs. It seems that there might be some fundamental implementation issue in the code that is creating this issue. So it was decided to drop the idea of adding *direct feed-in* for now. After much trail & error, values of `0.001`,`0.90`,`128`,`150` were chosen as *initial learning rate*,*decay rate*,*training batch size*,*number of epochs* were chosen respectively as the most appropriate values for the model. These hyperparameter values resulted in achieving a *validation accuracy* of `0.962` and a *test accuracy* of `0.939`.
- 
+Consequently, I started incorporating other suggested techniques, namely *dropout*, *L2 Regularization*,*decaying learning rate*, *Xavier initialising of weights* and *direct feed-in* from convolution layers to the fully connected layers (as described in the  Pierre Sermanet and Yann LeCun paper). Upon experimentation, the introduction of *direct feed-in* made the model behave very unreliably and the validation accuracy was stuck at a very low number despite training the model for a number of epochs. It seems that there might be some fundamental implementation issue in the code that is creating this issue. So it was decided to drop the idea of adding *direct feed-in* for now. After much trail & error, values of `0.001`,`0.90`,`128`,`150` were chosen as *initial learning rate*,*decay rate*,*training batch size*,*number of epochs* were chosen respectively as the most appropriate values for the model. These hyperparameter values resulted in achieving a *validation accuracy* of `0.962` and a *test accuracy* of `0.939`. These results indicate almost same accuracy level on both *validation* and *test* datasets and assures model's robustness when it comes to predicting unseen data.
 
-###Test a Model on New Images
+The below code listing shows how the different accuracies/plots were generated.
+
+```python
+for batch_i in batches_pbar:
+            batch_start = batch_i*BATCH_SIZE
+            batch_x, batch_y = X_train_grayscale[batch_start:batch_start + BATCH_SIZE], y_train_working_copy[batch_start:batch_start + BATCH_SIZE]         
+            _,t_loss,l_rate,steps = sess.run([training_operation,loss,learning_rate,global_step], feed_dict={x: batch_x, y: batch_y, keep_prob: 0.5})                      
+            # Log every 100 batches
+            if not batch_i % log_batch_step:
+                # Calculate Training and Validation accuracy after n batches
+                training_accuracy = sess.run(accuracy_operation, feed_dict={x: X_train_grayscale, y: y_train_working_copy, keep_prob: 1.0})
+                validation_accuracy = sess.run(accuracy_operation, feed_dict={x: X_valid_grayscale, y: y_valid_working_copy, keep_prob: 1.0})
+
+                # Log batches
+                previous_batch = batches[-1] if batches else 0
+                batches.append(log_batch_step + previous_batch)
+                loss_batch.append(t_loss)
+                learning_rate_decay.append(l_rate)
+                train_accuracy_batch.append(training_accuracy)
+                valid_accuracy_batch.append(validation_accuracy)
+
+        # Calculate Validation accuracy for this epoch i.e. across all batches for the complete dataset
+        validation_accuracy_epoch = evaluate(X_valid_grayscale, y_valid_working_copy) # for this EPOCH
+        average_validation_accuracy = validation_accuracy_epoch * 100 # just for keeping hold of last accuracy for writing out to file
+        
+        print("Validation Accuracy = {:.3f}".format(validation_accuracy_epoch))
+...
+loss_plot = plt.subplot(311)
+loss_plot.set_title('Loss')
+loss_plot.plot(batches, loss_batch, 'g')
+loss_plot.set_xlim([batches[0], batches[-1]])
+
+l_rate_plot = plt.subplot(312)
+l_rate_plot.set_title('Learning Rate Decay')
+l_rate_plot.plot(batches, learning_rate_decay, 'b')
+l_rate_plot.set_xlim([batches[0], batches[-1]])
+
+accuracy_plot = plt.subplot(313)
+accuracy_plot.set_title('Accuracy')
+accuracy_plot.plot(batches, train_accuracy_batch, 'x', label='Training Accuracy')
+accuracy_plot.plot(batches, valid_accuracy_batch, 'r', label='Validation Accuracy')
+accuracy_plot.set_ylim([0, 1.0])
+accuracy_plot.set_xlim([batches[0], batches[-1]])
+accuracy_plot.legend(loc=4)
+
+plt.tight_layout()
+plt.show()
+```
+![Train 1](writeup-images/train-150-128-2500.png)
+
+![Train 2](writeup-images/train2-150-128-2500.png)
+
+
+### Test a Model on New Images
 
 #### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
