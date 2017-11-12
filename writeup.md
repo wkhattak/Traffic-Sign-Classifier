@@ -216,7 +216,6 @@ Here are the results of the prediction:
 
 | Actual                    |Predicted            |
 |:----------------------:|:------------------------:|
-|
 ![Model predictions](writeup-images/predict-150-128-2500.png)|  							
 
 ![Model accuracy](writeup-images/predict2-150-128-2500.png)
