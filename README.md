@@ -46,7 +46,7 @@ Follow the instructions/code in the *Traffic_Sign_Classifier.ipynb* notebook.
 
 ## Troubleshooting
 
-**tdqm **
+**tdqm**
 
 To install, execute conda install -c anaconda tqdm
 
