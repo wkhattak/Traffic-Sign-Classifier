@@ -214,9 +214,9 @@ All images are of good quality. However, *Wild animals crossing* and *No passing
 
 Here are the results of the prediction:
 
-| Actual                    |Predicted            |
+| Actual                 |Predicted                 |
 |:----------------------:|:------------------------:|
-![Model predictions](writeup-images/predict-150-128-2500.png)|  							
+|![Model predictions](writeup-images/predict-Actual-150-128-2500.png)|![Model predictions](writeup-images/predict-Predict-150-128-2500.png)| 							
 
 ![Model accuracy](writeup-images/predict2-150-128-2500.png)
 
