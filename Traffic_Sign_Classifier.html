@@ -15005,12 +15005,6 @@ GIZhGMbQ8X8B9T9zQ6EvKCAAAAAASUVORK5CYII=
 
 <span class="c1"># Draw validation data set class distribution</span>
 <span class="n">df_bar_valid</span> <span class="o">=</span> <span class="n">draw_distribution</span><span class="p">(</span><span class="n">y_valid_working_copy</span><span class="p">,</span> <span class="n">df_signnames</span><span class="p">,</span> <span class="s1">&#39;ClassId&#39;</span><span class="p">,</span> <span class="s1">&#39;SignName&#39;</span><span class="p">,</span> <span class="s1">&#39;Validation Class Distribution&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
-
-<span class="c1"># Draw training/validation data set class distribution comparison</span>
-<span class="c1">#df_merged = pd.merge(df_bar_train, df_bar_valid, on=&#39;SignName&#39;,suffixes = [&#39;_Training&#39;,&#39;_Validation&#39;])</span>
-<span class="c1">#ax = df_merged.plot(kind=&#39;bar&#39;, title =&quot;Training/Validation Class Ditribution Comparison&quot;, figsize=(25, 10), legend=True, fontsize=14, color = [&#39;r&#39;,&#39;b&#39;])</span>
-<span class="c1">#ax.set_xticklabels(df_merged.iloc[:][&#39;SignName&#39;], rotation=87)</span>
-<span class="c1">#plt.show()</span>
 </pre></div>
 
 </div>
@@ -20719,10 +20713,6 @@ zEmbmZmZmZlZgzlpMzMzMzMzazAnbWZmZmZmZg32vyQl2GBHKn1wAAAAAElFTkSuQmCC
     <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">images</span><span class="p">:</span>
         <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">fastNlMeansDenoising</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="kc">None</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-
-<span class="c1"># TODO: Select shapes from the images as the mask and then extract foreground from image to discard background pixels i.e. noise</span>
-<span class="c1"># https://www.pyimagesearch.com/2016/02/08/opencv-shape-detection/</span>
-<span class="c1"># https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_imgproc/py_grabcut/py_grabcut.html#grabcut</span>
 </pre></div>
 
 </div>
@@ -26974,9 +26964,6 @@ ouQd+rKqKIqiKIqiKIqi5B36sqooiqIoiqIoiqLkHfqyqiiKoiiKoiiKouQd+rKqKIqiKIqiKIqi
 <span class="n">X_predict_grayscale</span> <span class="o">=</span> <span class="n">add_missing_color_channel</span><span class="p">(</span><span class="n">X_predict_grayscale</span><span class="p">)</span>
 
 <span class="n">predict_model_directory</span> <span class="o">=</span> <span class="s1">&#39;./saved-models/khattaknet-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">EPOCHS</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">BATCH_SIZE</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span>
-<span class="c1">#predict_model_directory = &#39;./saved-models/khattaknet-50-128/&#39;</span>
-<span class="c1">#predict_model_directory = &#39;./saved-models/khattaknet-150-128/&#39;</span>
-
 <span class="n">prediction_probs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">)</span>
 <span class="n">correct_predictions</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">one_hot_y</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 <span class="n">top5_predictions</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">top_k</span><span class="p">(</span><span class="n">prediction_probs</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>

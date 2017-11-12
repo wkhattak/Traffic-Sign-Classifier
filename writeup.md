@@ -218,21 +218,12 @@ Here are the results of the prediction:
 
 ![Model accuracy](writeup-images/predict2-150-128-2500.png)
 
-The model was able to correctly guess 6 of the 10 traffic signs, which gives an accuracy of `60%`. This result is not at par with the test results. This could be attributed to the quality of training, validation and test images. These images seem to be of lower quality, hence there's a difference between new images and what the model was trained on. Other reason could be that although the model has a *validation* accuracy of `0.962`, there's room for improvement as some individuals have even reported `99%` accuracy. In future, *inception modules*, *direct feed-in*, *furhter decrease in learning rate* and even *colored images* can be used (as teh background color/edge color might help to furhter increase the certainty of the model).
+The model was able to correctly guess 6 of the 10 traffic signs, which gives an accuracy of `60%`. Surprisingly enough, the both the speed limit signs were predicted incorrectly & swapped (straightforward shape), while on the other hand, *Wild animals crossing* sign was predicted correctly (complex shape).
 
-#### Q3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
+This result is not at par with the test results. This could be attributed to the quality of training, validation and test images. These images seem to be of lower quality, hence there's a difference between new images and what the model was trained on. Other reason could be that although the model has a *validation* accuracy of `0.962`, there's room for improvement as some individuals have even reported `99%` accuracy. In future, *inception modules*, *direct feed-in*, *furhter decrease in learning rate* and even *colored images* can be used (as the background color/edge color might help to further increase the certainty of the model).
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
+#### Q3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction? 
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+The code for making predictions on my final model is located in the third-last cell of the Jupyter notebook labelled *Predict the Sign Type for Each Image*. While the second-last cell labelled *Analyze Performance* and the last cell labelled *Output Top 5 Softmax Probabilities For Each Image Found on the Web* calculates the *accuracy* of the model and *softmax probabilities* on these new images respectively.
 
-| Probability         	|     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
-
-
-For the second image ... 
+![Softtmax Probabilities](writeup-images/predict3-150-128-2500.png)
