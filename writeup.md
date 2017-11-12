@@ -69,7 +69,7 @@ Here is an exploratory visualization of the dataset. It is a bar chart that show
 
 #### Q1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? 
 
-##### Augmentation
+#### Augmentation
 
 Based on the exploratory analysis of the dataset, I decided to first augment my data by generating additional data. Failure to do so impacts the accuracy of the model because the more represented classes stand a higher chance of being predicted.
 
@@ -94,17 +94,17 @@ Below is the result after image augmentation/dataset balancing:
 ![Dataset augmentation 2](writeup-images/data-augmentation2.png)
 
 
-##### Pre-processing
+#### Pre-processing
 
 Following image pre-processing techniques were applied (these techniques are a combination of generally known image enhancement techniques and techniques mentioned in [Pierre Sermanet and Yann LeCun](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf) paper):
 
-1. **Grayscaling**: Images were grayscaled as they seem to increase the accuracy of the model by being indifferent to color. Also, it dramatically reduces image size as there's only 1 color channel, which helps with speeding up the training cycle. `cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)` function was used for grayscaling.
+1. **Grayscaling**: Images were grayscaled as grayscaling seems to increase the accuracy of the model by being indifferent to color. Also, it dramatically reduces image size as there's only 1 color channel, which helps with speeding up the training cycle. `cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)` function was used for grayscaling.
 
-2. **Histogram Normalization**: Images were made sharper by adjusting their contrast via Histogram Normalization technique. Instead of applying a single contrast value across the image, different values are applied to each different tiles of the image through Contrast Limited Adaptive Histogram Equalization (CLAHE) technique. This results in much sharper contrast. `cv2.createCLAHE()` function was used to achieve CLAHE.
+2. **Histogram Normalization**: Images were made sharper by adjusting their contrast via Histogram Normalization technique. Instead of applying a single contrast value across the image, different values are applied to different tiles of the image through Contrast Limited Adaptive Histogram Equalization (CLAHE) technique. This results in much sharper contrast. `cv2.createCLAHE()` function was used to achieve CLAHE.
 
 3. **Adaptive Threshold**: To reduce noise, Adaptive Thresholding was applied that further helps in filtering out unnecessary pixels. `cv2.adaptiveThreshold()` function was employed.
 
-4. **Normalization**: Normalization helps the optimizer to reduce the loss as quickly as possilbe as it doesn't need to do too much searching. Hence, the images were normalized. However, using the prescribed `(pixel - 128)/ 128`technique didn't really achieve `0` mean & `unit` variance. Instead,  `sklearn.preprocessing` package's `scale()` method was used that resulted in achieving `0` mean & `1` variance.
+4. **Normalization**: Normalization helps the optimizer to reduce the loss as quickly as possible as it doesn't need to do too much searching. Hence, the images were normalized. However, using the prescribed `(pixel - 128)/ 128` technique didn't really achieve `0` mean & `unit` variance. Instead,  `sklearn.preprocessing` package's `scale()` method was used that resulted in achieving `0` mean & `1` variance.
 
 As an example, consider the following image that displays the application of the above techniques:
 
@@ -114,7 +114,7 @@ The following image displays the application of the aforementioned techniques on
 
 ![Preprocessing pipeline](writeup-images/data-preprocessing2.png)
 
-#### Q2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.)? 
+#### Q2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc? 
 
 The architecture of the CNN is based on the famous [LeNet-5](http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf) architecure for [MNIST](http://yann.lecun.com/exdb/mnist/) digit recognition. However, to increase the depth of the network, one more convolution layer was added. Further, to reduce overfitting and make the network more robust, [L2 Regularization](https://en.wikipedia.org/wiki/Regularization_(mathematics)) & [Dropout](https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf) were added. 
 
@@ -145,7 +145,7 @@ The model was trained by feeding in the pre-processed `65,518` grayscale images 
 
 To solve the problem at hand, I started off with the LeNet architecture as is because it is renowned for solving a similar problem i.e. recognizing images of hand written numbers from `0-9`. Based on *convolution*, such an architecture helps to decrease the breadth of the network and enables to increase the depth without compromising the accuracy. Different *learning rates*, *batch sizes* and *number of epochs* were tried. However, just by using the LeNet as is, the validation accuracy was not reaching the required minimum of `0.93`.
 
-Consequently, I started incorporating other suggested techniques, namely *dropout*, *L2 Regularization*,*decaying learning rate*, *Xavier initialising of weights* and *direct feed-in* from convolution layers to the fully connected layers (as described in the  Pierre Sermanet and Yann LeCun paper). Upon experimentation, the introduction of *direct feed-in* made the model behave very unreliably and the validation accuracy was stuck at a very low number despite training the model for a number of epochs. It seems that there might be some fundamental implementation issue in the code that is creating this issue. So it was decided to drop the idea of adding *direct feed-in* for now. After much trail & error, values of `0.001`,`0.90`,`128`,`150` were chosen as *initial learning rate*,*decay rate*,*training batch size*,*number of epochs* were chosen respectively as the most appropriate values for the model. These hyperparameter values resulted in achieving a *validation accuracy* of `0.962` and a *test accuracy* of `0.939`. These results indicate almost same accuracy level on both *validation* and *test* datasets and assures model's robustness when it comes to predicting unseen data.
+Consequently, I started incorporating other suggested techniques, namely *dropout*, *L2 Regularization*,*decaying learning rate*, *Xavier initialising of weights* and *direct feed-in* from convolution layers to the fully connected layers (as described in the  Pierre Sermanet and Yann LeCun paper). Upon experimentation, the introduction of *direct feed-in* made the model behave very unreliably and the validation accuracy was stuck at a very low number despite training the model for a number of epochs. It seems that there might be some fundamental implementation issue in the code that is creating this issue. So it was decided to drop the idea of adding *direct feed-in* for now. After much trail & error, values of `0.001`,`0.90`,`128`,`150` were chosen as *initial learning rate*, *decay rate*, *training batch size*, *number of epochs* were chosen respectively as the most appropriate values for the model. These hyperparameter values resulted in achieving a *validation accuracy* of `0.962` and a *test accuracy* of `0.939`. These results indicate almost same accuracy level on both *validation* and *test* datasets and assures model's robustness when it comes to predicting unseen data.
 
 The below code listing shows how the different accuracies/plots were generated.
 
@@ -208,22 +208,25 @@ Here are ten German traffic signs that I found on the web:
 
 ![New images](writeup-images/new-images.png)
 
-All images are of good quality. However, *Wild animals crossing* and *No passing* might be difficult to classify because of their angle. Also, the last image has part of another road sign visible as well.
+All images are of good quality. However, *Wild animals crossing* and *No passing* might be difficult to classify because of their angle. Also, the first, fourth and the last images have part of another road sign visible as well.
 
 #### Q2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set?
 
 Here are the results of the prediction:
 
-![Model predictions](writeup-images/predict-150-128-2500.png)  							
+| Actual|Predicted|
+|:---------:|:--------:|
+|
+![Model predictions](writeup-images/predict-150-128-2500.png)|  							
 
 ![Model accuracy](writeup-images/predict2-150-128-2500.png)
 
-The model was able to correctly guess 6 of the 10 traffic signs, which gives an accuracy of `60%`. Surprisingly enough, the both the speed limit signs were predicted incorrectly & swapped (straightforward shape), while on the other hand, *Wild animals crossing* sign was predicted correctly (complex shape).
+The model was able to correctly guess 6 of the 10 traffic signs, which gives an accuracy of `60%`. Surprisingly enough, both the speed limit signs were predicted incorrectly & swapped (straightforward shapes), while on the other hand, *Wild animals crossing* sign was predicted correctly (complex shape).
 
 This result is not at par with the test results. This could be attributed to the quality of training, validation and test images. These images seem to be of lower quality, hence there's a difference between new images and what the model was trained on. Other reason could be that although the model has a *validation* accuracy of `0.962`, there's room for improvement as some individuals have even reported `99%` accuracy. In future, *inception modules*, *direct feed-in*, *further decrease in learning rate* and even *colored images* can be used (as the background color/edge color might help to further increase the certainty of the model).
 
 #### Q3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction? 
 
-The code for making predictions on my final model is located in the third-last cell of the Jupyter notebook labelled *Predict the Sign Type for Each Image*. While the second-last cell labelled *Analyze Performance* and the last cell labelled *Output Top 5 Softmax Probabilities For Each Image Found on the Web* calculates the *accuracy* of the model and *softmax probabilities* on these new images respectively.
+The code for making predictions on my final model is located in the third-last cell of the Jupyter notebook labelled *Predict the Sign Type for Each Image*. While the second-last cell labelled *Analyze Performance* and the last cell labelled *Output Top 5 Softmax Probabilities For Each Image Found on the Web* calculate the *accuracy* of the model and *softmax probabilities* on these new images respectively.
 
 ![Softtmax Probabilities](writeup-images/predict3-150-128-2500.png)
