@@ -23,6 +23,7 @@ The entire solution comprises the following steps:
 * **Traffic_Sign_Classifier.html:** Html output of the Python notebook
 * **Traffic_Sign_Classifier.ipynb:** Python notebook containing the source code
 * **README.md:** Project readme file
+* **signnames.csv :** A csv file that contains the mapping between numerical class labels and their actual string labels
 * **writeup.md:** Project writeup file containing detailed information about the inner workings of this project
 
 ## Requirements
