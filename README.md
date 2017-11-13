@@ -20,8 +20,6 @@ The entire solution comprises the following steps:
 * **saved-models:** Directory containing trained model 
 * **test-images:** Directory containing 10 new images for making predictions
 * **writeup-images:** Directory containing images that appear in the project report
-* **test_videos_output:** Directory containing processed videos
-* **writeup_images:** Directory containing images for project writeup
 * **Traffic_Sign_Classifier.html:** Html output of the Python notebook
 * **Traffic_Sign_Classifier.ipynb:** Python notebook containing the source code
 * **README.md:** Project readme file
